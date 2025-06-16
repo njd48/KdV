@@ -1,0 +1,11 @@
+KdV simulation 
+Author: Nicholas J. Dubicki 
+
+Solve the KdV equation on the interval x in [ 0, 2*pi )
+simIDno: 0
+N:       16
+first column is time t
+--------------------------------------------
+0,0,1.21431e-17,6.80342e-18,-8.23994e-18,0,8.39172e-16,2.0074e-07,0.021167,1,0.021167,2.0074e-07,8.39172e-16,0,-8.23994e-18,6.80342e-18,1.21431e-17
+0.03,nan,nan,nan,-nan,-nan,nan,nan,nan,nan,nan,nan,-nan,nan,nan,nan,nan
+0.06,nan,nan,nan,-nan,-nan,nan,nan,nan,nan,nan,nan,-nan,nan,nan,nan,nan
