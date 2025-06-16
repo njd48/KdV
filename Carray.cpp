@@ -12,6 +12,7 @@
 
 class Carray {
 private:
+        bool isAlloced = false;
         size_t     N;
         complex_t  invN;
         complex_t* z;
@@ -53,12 +54,15 @@ Carray::Carray( size_t n ) {
     z     = new complex_t[N];
     planf = fftw_plan_dft_1d( N, reinterpret_cast<fftw_complex*>(z), reinterpret_cast<fftw_complex*>(z), FFTW_FORWARD,  FFTW_ESTIMATE);
     plani = fftw_plan_dft_1d( N, reinterpret_cast<fftw_complex*>(z), reinterpret_cast<fftw_complex*>(z), FFTW_BACKWARD, FFTW_ESTIMATE);
+    isAlloced = true;
 }
 
 Carray::~Carray(  ) {
-    delete[] z;
-    fftw_destroy_plan(planf);
-    fftw_destroy_plan(plani); 
+    if (isAlloced) {
+        delete[] z;
+        fftw_destroy_plan(planf);
+        fftw_destroy_plan(plani); 
+    }
 }
 
 void Carray::alloc( size_t n ) {
@@ -67,6 +71,7 @@ void Carray::alloc( size_t n ) {
     z     = new complex_t[N];
     planf = fftw_plan_dft_1d( N, reinterpret_cast<fftw_complex*>(z), reinterpret_cast<fftw_complex*>(z), FFTW_FORWARD,  FFTW_ESTIMATE);
     plani = fftw_plan_dft_1d( N, reinterpret_cast<fftw_complex*>(z), reinterpret_cast<fftw_complex*>(z), FFTW_BACKWARD, FFTW_ESTIMATE);
+    isAlloced = true;
 }
 
 void Carray::copyFrom( const Carray& x ){
